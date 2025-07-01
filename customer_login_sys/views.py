@@ -140,7 +140,7 @@ class CustomerProfile:
             email = request.session.get('loginuser_email')
             c_id = request.session['loginuser_id']
             logedin = Customer.get_customername_by_email(email)
-            return render(request, "customer_login_sys/userinfo.html", {'logedin':logedin, 'cid':c_id,})
+            return render(request, "customer_login_sys\userinfo.html", {'logedin':logedin, 'cid':c_id,})
                     
             
         else:
@@ -319,7 +319,7 @@ class SellerProfile:
             email = request.session.get('loginseller_email')
             c_id = request.session['loginseller_id']
             logedin = Seller.get_sellername_by_email(email)
-            return render(request, "customer_login_sys/userinfo.html", {'logedin':logedin, 'cid':c_id,})
+            return render(request, "customer_login_sys\userinfo.html", {'logedin':logedin, 'cid':c_id,})
                     
             
         else:

@@ -36,7 +36,7 @@ def frontpage(request):
             show_product = Products.search_product(search_product)
             print("search-product", show_product)
             
-            return render (request,'main/search.html',{'products':show_product , 'search_word':search_product,})
+            return render (request,'main\search.html',{'products':show_product , 'search_word':search_product,})
             
             
         else:
@@ -81,7 +81,7 @@ def frontpage(request):
             'carttot':carttot
 
         }
-        return render(request, 'main/frontpage.html',data)
+        return render(request, 'main\frontpage.html',data)
     
 
 def cart(request):
@@ -143,7 +143,7 @@ def cart(request):
                 
                 
             
-            return render(request, 'customer_login_sys/cart.html',cart)
+            return render(request, 'customer_login_sys\cart.html',cart)
 
         else:
             if 'loginuser_email' in request.session:
@@ -152,7 +152,7 @@ def cart(request):
             else:
                 logedin = False
            
-            return render(request,'customer_login_sys/cart.html', {'logedin':logedin})
+            return render(request,'customer_login_sys\cart.html', {'logedin':logedin})
 
 
 
@@ -178,18 +178,18 @@ def checkout(request):
                     neworder.save()
                 del request.session['cart']
 
-                return render(request, 'customer_login_sys/checkout.html',{'logedin': logedin})
+                return render(request, 'customer_login_sys\checkout.html',{'logedin': logedin})
             else:
                 form = Customer_login()
                 return render(request, "customer_login_sys\login.html", {'form':form})
 
         return HttpResponse("Success")
     else:
-        return render(request, 'customer_login_sys/error.html' )
+        return render(request, 'customer_login_sys\error.html' )
 
 
 def error(request):
-    return render(request, 'main/error.html')
+    return render(request, 'main\error.html')
 
 
 
@@ -224,7 +224,7 @@ def addproducts(request):
     else:
         form = add_product()
         logedin = request.session.get('loginseller_email')
-        return render(request, 'main/addproducts.html',{'form':form, 'logedin':logedin})
+        return render(request, 'main\addproducts.html',{'form':form, 'logedin':logedin})
 
 
 def viewproducts(request):
@@ -242,10 +242,10 @@ def viewproducts(request):
                 
             except:
                 products = []
-            return render(request, "main/viewproducts.html", {'products':products, 'logedin':email})
+            return render(request, "main\viewproducts.html", {'products':products, 'logedin':email})
 
 
 
     else:
-        return render(request,"main/error.html")
+        return render(request,"main\error.html")
 
