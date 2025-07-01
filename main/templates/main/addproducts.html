@@ -1,0 +1,15 @@
+{% extends 'customer_login_sys\newbase.html' %}
+
+{% block content %}
+
+<div class="row">
+    <form method ="POST" action ="{% url 'addproducts' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_p}}
+        <button type ="submit" class="btn-primary">Add Product</button>
+    </form>
+
+</div>
+
+{% endblock %}

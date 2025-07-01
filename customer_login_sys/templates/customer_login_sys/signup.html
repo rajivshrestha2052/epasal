@@ -1,0 +1,38 @@
+{% extends "main/base.html" %}
+
+
+{% block content %}
+
+<div class = "container d-flex justify-content-center">
+ <div class="col-md-9 col-sm-7">
+    <h1>Sign Up Form</h1>
+    <div class="content-form-page">
+      <form class="form-horizontal form-without-legend" action="{% url 'signuppage' %} " method="POST">
+          {% csrf_token %}
+          {% if error_msg %}
+          <div class="alert alert-danger" role="alert">
+            {{ error_msg }}
+            </div>
+          {% endif %}
+          {% for f in form %}
+          
+         
+        <div class="form-group">
+          <label class="col-lg-4 form-label">{{ f.label_tag }}</label>
+          <div class="col-lg-6 padding-top-5">
+            {{ f }}
+        </div>
+        {% endfor %}
+      
+
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8 col-md-offset-2 pl-0 pt-20 mt-2">
+            <input class="btn btn-primary" type="submit" value="Sign Up" name="submit">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>  
+{% endblock %}
+

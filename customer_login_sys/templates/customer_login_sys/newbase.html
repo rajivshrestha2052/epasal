@@ -1,0 +1,77 @@
+{% load static %} 
+{% load custom_filter %}
+<head>
+  <title>E-Pasal | Shop Smart</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+    <!-- Header starts-->
+    <div class="super_container">
+      <!-- Header -->
+      <header class="header">
+          <!-- Top Bar -->
+          <div class="top_bar">
+              <div class="container">
+                  <div class="row">
+                      <div class="col d-flex flex-row">
+                          <div class="top_bar_contact_item">
+                              <div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918577/phone.png" alt=""></div>+977 9813941600
+                          </div>
+                          <div class="top_bar_contact_item">
+                              <div class="top_bar_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918597/mail.png" alt=""></div><a href="mailto:epasal@gmail.com">epasal@gmail.com</a>
+                          </div>
+                          <div class="top_bar_content ml-auto">
+                              <div class="top_bar_menu">
+                                  <ul class="standard_dropdown top_bar_dropdown">
+                                      <li> <a href="#">English<i class="fas fa-chevron-down"></i></a>
+                                          <ul>
+                                              <li><a href="#">Italian</a></li>
+                                              <li><a href="#">Nepali</a></li>
+                                              
+                                          </ul>
+                                      </li>
+                                      <li><a href="#"> ₹ Nepalese Rupees</a><i class="fas fa-chevron"></i></a>
+                                          
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="top_bar_user">
+                                  {% if logedin %}
+                                  <div class="user_icon"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918647/user.svg" alt=""></div>
+                                  <div><a href="{% url 'sellerprofile' %}">Hi! {{ logedin|capfirst }} |Profile</a></div>
+                                  <div><a href="{% url 'logout' %}">Sign Out</a></div>
+                                  
+                                  {% endif %}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+{% comment %}    sidebar {% endcomment %}
+<div class="row">
+  
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'sellerprofile' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              Dashboard <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          
+          
+        </ul>
+
+        
+     </div>
+    </nav>
+
+{% block content %}
+
+{% endblock %} 
+</div>

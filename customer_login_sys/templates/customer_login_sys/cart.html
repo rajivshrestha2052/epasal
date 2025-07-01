@@ -1,0 +1,123 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<div class="container">
+   <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Your Cart</p>
+        <hr>
+        {% if products%}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                  
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{product.image.url}}" alt=""></td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.price|currency}}</td>
+                    <td>
+                        
+						<div id ="{{ product.id }}" class="row no-gutters">
+							<form action="/cart/#{{ product.id }}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='cart-product' value='{{product.id}}'>
+								<input hidden type="text" name='remove' value='True'>
+								<input type="submit" value=" - " class="btn btn-block btn-light border-right">
+							</form>
+							<div class="text-center col">{{product|cart_quantity:request.session.cart}} </div>
+							<form action="/cart/#{{ product.id }}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='cart-product' value='{{product.id}}'>
+								<input type="submit" value=" + " class="btn btn-block btn-light border-left">
+							</form>
+						</div>
+						
+						
+                        
+                    </td>
+                    <td>{{product|price_total:request.session.cart|currency}}</td>
+
+                    <td>
+                      <form action="/cart/#{{ product.id }}" class="col-2 " method="post">
+                        {% csrf_token %}
+                        <input hidden type="text" name='cart-product' value='{{product.id}}'>
+                        <input hidden type="text" name='del' value='True'>
+                        <button type="submit" class="btn btn-danger">Del</button>
+
+                      </form>
+
+                    </td>
+                  
+                </tr>
+                {% endfor %}
+               
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th colspan="4"></th>
+                    <th class="" colspan="">Total</th>
+                    <th>{{products|total_cart_price:request.session.cart|currency}}</th>
+                </tr>
+            </tfoot>
+        </table>
+        <hr>
+        <div class="m-3 p-3">
+            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info border rounded  col-lg-3 float-right">Check out</a>
+        </div>
+   </div>
+</div>
+
+
+<!-- modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              Check Out Form
+          </h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="m-2 p-3">
+            <form action="{% url 'checkout-page' %}" method="POST">
+                {% csrf_token %}
+                {{ checkoutform }}
+                <div class="row d-flex justify-content-center mt-2">
+                  <button type="submit" class="btn btn-primary btn-sm px-5">checkout</button>
+                </div>
+            </form>
+          </div>
+        </div>
+        {% else %}
+            <table class="table">
+                <td>Nothing In Cart</td>
+            </table>
+        {% endif%}
+        
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

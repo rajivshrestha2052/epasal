@@ -1,0 +1,89 @@
+{% extends 'customer_login_sys\newbase.html' %}
+
+{% block content %}
+
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        
+      </div>
+        <div class="container">
+          <div class ="row">
+
+              {% if msg %}
+              <div class="alert alert-success">
+                {{ msg }}
+              </div>
+              {% endif %}
+            </div>
+            
+                          {% comment %} change password {% endcomment %}
+            <div class = "row">
+            <div class="col-lg-6 col-xl-3 mb-4">
+              <div class="card bg-primary text-white h-100">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="me-3">
+                              <div class="text-white-75 small"> </div>
+                              <div class="text-lg fw-bold">Username</div>
+                              <div class="text-lg fw-bold">{{ email }}</div>
+                          </div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      </div>
+                  </div>
+                  <div class="card-footer d-flex align-items-center justify-content-between small">
+                      <a class="text-white stretched-link" href="{% url 'changesellerpass' %}">change Password</a>
+                      <div class="text-white"><svg class="svg-inline--fa fa-angle-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg=""><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"></path></svg><!-- <i class="fas fa-angle-right"></i> Font Awesome fontawesome.com --></div>
+                  </div>
+              </div>
+            </div>
+
+            {% comment %} Products {% endcomment %}
+
+            <div class="col-lg-6 col-xl-3 mb-4">
+              <div class="card bg-primary text-white h-100">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="me-3">
+                              <div class="text-white-75 small"> </div>
+                              <div class="text-lg fw-bold"><a class="text-white stretched-link" href="{% url 'viewproducts' %}">View Products</a></div>
+                              
+                          </div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      </div>
+                  </div>
+                  
+              </div>
+            </div>
+
+            {% comment %} Add Products {% endcomment %}
+
+            <div class="col-lg-6 col-xl-3 mb-4">
+              <div class="card bg-primary text-white h-100">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="me-3">
+                              <div class="text-white-75 small"> </div>
+                              <div class="text-lg fw-bold"><a class="text-white stretched-link" href="{% url 'addproducts' %}">Add Products</a></div>
+                              
+                          </div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar feather-xl text-white-50"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      </div>
+                  </div>
+                  
+              </div>
+            </div>
+
+            
+
+          </div>
+        
+        </div>
+
+      
+      
+    </main>
+  
+
+{% endblock %}

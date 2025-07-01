@@ -1,0 +1,39 @@
+{% extends 'customer_login_sys\newbase.html' %}
+{% block content %}
+
+
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Change Password</h1>
+        
+      </div>
+        <div class="container">
+          <div class ="row">
+            {% if msg %}
+                <div class="alert alert-danger">
+                 {{ msg }}
+                    </div>
+             {% endif %}
+                </div>
+                <div class ="row center">
+                <form action ="{% url 'changesellerpass' %}" method ="POST">
+                    {% csrf_token %}
+                <div class="col-md-9"><label class="labels">Old Password</label><input type="text" class="form-control" name = "oldpass"></div>
+                <div class="col-md-9"><label class="labels">New Password</label><input type="text" class="form-control" name = "newpass"></div>
+                <div class="col-md-9"><label class="labels">Confirm Password</label><input type="text" class="form-control" name = "confirmpass"></div>
+                <hr>
+                <button type ="submit" class="btn btn-primary">Apply</button>
+                </form>
+
+          </div>
+        
+        </div>
+
+      
+      
+    </main>
+ 
+  {% endblock %}
+
+

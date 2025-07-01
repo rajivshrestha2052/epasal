@@ -1,0 +1,45 @@
+{% extends 'customer_login_sys\newbase.html' %}
+{% comment %} {% load custom_filter %} {% endcomment %}
+
+{% block content %}
+
+<div class ="row">
+    <div class = container>
+    {% if products%}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                  
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{product.image.url}}" alt=""></td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.price }}</td>
+                    <td><a href ="#">edit</a></td>
+                    <td><a href ="#">del</a></td>
+                    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <H2>No Products Found</h2>
+    {% endif %}
+
+</div>
+</div>
+
+
+
+
+{% endblock %}
