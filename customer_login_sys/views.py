@@ -33,16 +33,16 @@ class User_login():
 
                     else:
                         error_msg = "Username and Password donot match"
-                        return render(request, "customer_login_sys\login.html", {'form':form,'error_msg':error_msg})
+                        return render(request, "customer_login_sys/login.html", {'form':form,'error_msg':error_msg})
 
                 else:
                     error_msg = "Username and Password donot match"
-                    return render(request, "customer_login_sys\login.html", {'form':form,'error_msg':error_msg})
+                    return render(request, "customer_login_sys/login.html", {'form':form,'error_msg':error_msg})
                 
         else:
             
             form = Customer_login()
-        return render(request, "customer_login_sys\login.html", {'form':form})
+        return render(request, "customer_login_sys/login.html", {'form':form})
 
 
     def logout_user(request):
@@ -76,18 +76,18 @@ class User_login():
                     newform = Customer_login()
                     if not error_msg:
                         newcustomer.register_user()
-                        return render(request, "customer_login_sys\login.html",{'form':newform})
+                        return render(request, "customer_login_sys/login.html",{'form':newform})
                     else:
-                        return render(request, "customer_login_sys\signup.html",{'form':form,'error_msg':error_msg})
+                        return render(request, "customer_login_sys/signup.html",{'form':form,'error_msg':error_msg})
                     
                 except:
                     error_msg = "oops Something went wrong in your registration"
-                    return render(request, "customer_login_sys\signup.html",{'form':form, 'error_msg':error_msg})
+                    return render(request, "customer_login_sys/signup.html",{'form':form, 'error_msg':error_msg})
                 
         else:
             
             form = Customer_Signup()
-        return render(request, "customer_login_sys\signup.html", {'form':form})
+        return render(request, "customer_login_sys/signup.html", {'form':form})
 
 
 
@@ -126,7 +126,7 @@ class CustomerProfile:
             else:
                 order_total = 0
             
-            return render(request, "customer_login_sys\dashboard.html",{'logedin':logedin, 'carttot':carttot, 'ordertot': order_total, 'email':email})
+            return render(request, "customer_login_sys/dashboard.html",{'logedin':logedin, 'carttot':carttot, 'ordertot': order_total, 'email':email})
         else:
             return redirect("errorpage")
 
@@ -140,7 +140,7 @@ class CustomerProfile:
             email = request.session.get('loginuser_email')
             c_id = request.session['loginuser_id']
             logedin = Customer.get_customername_by_email(email)
-            return render(request, "customer_login_sys\userinfo.html", {'logedin':logedin, 'cid':c_id,})
+            return render(request, "customer_login_sys/userinfo.html", {'logedin':logedin, 'cid':c_id,})
                     
             
         else:
@@ -161,18 +161,18 @@ class CustomerProfile:
                         user.password = newpass
                         user.save()
                         msg = "Password Changed Successfully"
-                        return render(request, "customer_login_sys\dashboard.html", {'msg':msg, 'logedin':logedin,})
+                        return render(request, "customer_login_sys/dashboard.html", {'msg':msg, 'logedin':logedin,})
                     else:
                         msg = "Passwords donot match"
-                        return render(request, "customer_login_sys\changepass.html", {'msg':msg, 'logedin':logedin,})
+                        return render(request, "customer_login_sys/changepass.html", {'msg':msg, 'logedin':logedin,})
                 else:
                     msg = "Incorrect Password"
-                    return render(request, "customer_login_sys\changepass.html", {'msg':msg, 'logedin':logedin,})
+                    return render(request, "customer_login_sys/changepass.html", {'msg':msg, 'logedin':logedin,})
 
             else:
                 email = request.session.get('loginuser_email')
                 logedin = Customer.get_customername_by_email(email)
-                return render(request, "customer_login_sys\changepass.html", {'logedin':logedin,})
+                return render(request, "customer_login_sys/changepass.html", {'logedin':logedin,})
 
         else:
             return redirect("errorpage")
@@ -209,16 +209,16 @@ class Seller_login():
 
                     else:
                         error_msg = "Username and Password donot match"
-                        return render(request, "customer_login_sys\loginseller.html", {'form':form,'error_msg':error_msg})
+                        return render(request, "customer_login_sys/loginseller.html", {'form':form,'error_msg':error_msg})
 
                 else:
                     error_msg = "Username and Password donot match"
-                    return render(request, "customer_login_sys\loginseller.html", {'form':form,'error_msg':error_msg})
+                    return render(request, "customer_login_sys/loginseller.html", {'form':form,'error_msg':error_msg})
                 
         else:
             
             form = Customer_login()
-        return render(request, "customer_login_sys\loginseller.html", {'form':form})
+        return render(request, "customer_login_sys/loginseller.html", {'form':form})
 
 
     def logout_seller(request):
@@ -255,18 +255,18 @@ class Seller_login():
                     newform = Customer_login()
                     if not error_msg:
                         newcustomer.register_seller()
-                        return render(request, "customer_login_sys\loginseller.html",{'form':newform})
+                        return render(request, "customer_login_sys/loginseller.html",{'form':newform})
                     else:
-                        return render(request, "customer_login_sys\signupseller.html",{'form':form,'error_msg':error_msg})
+                        return render(request, "customer_login_sys/signupseller.html",{'form':form,'error_msg':error_msg})
                     
                 except:
                     error_msg = "oops Something went wrong in your registration"
-                    return render(request, "customer_login_sys\signup.html",{'form':form, 'error_msg':error_msg})
+                    return render(request, "customer_login_sys/signup.html",{'form':form, 'error_msg':error_msg})
                 
         else:
             
             form = Seller_Signup()
-        return render(request, "customer_login_sys\signup.html", {'form':form})
+        return render(request, "customer_login_sys/signup.html", {'form':form})
 
 
 
@@ -305,7 +305,7 @@ class SellerProfile:
             else:
                 order_total = 0
             
-            return render(request, "customer_login_sys\dashboardseller.html",{'logedin':logedin, 'carttot':carttot, 'ordertot': order_total, 'email':email})
+            return render(request, "customer_login_sys/dashboardseller.html",{'logedin':logedin, 'carttot':carttot, 'ordertot': order_total, 'email':email})
         else:
             return redirect("errorpage")
 
@@ -319,7 +319,7 @@ class SellerProfile:
             email = request.session.get('loginseller_email')
             c_id = request.session['loginseller_id']
             logedin = Seller.get_sellername_by_email(email)
-            return render(request, "customer_login_sys\userinfo.html", {'logedin':logedin, 'cid':c_id,})
+            return render(request, "customer_login_sys/userinfo.html", {'logedin':logedin, 'cid':c_id,})
                     
             
         else:
@@ -345,15 +345,15 @@ class SellerProfile:
                         return redirect('sellerprofile')
                     else:
                         msg = "Passwords donot match"
-                        return render(request, "customer_login_sys\changesellerpass.html", {'msg':msg, 'logedin':logedin,})
+                        return render(request, "customer_login_sys/changesellerpass.html", {'msg':msg, 'logedin':logedin,})
                 else:
                     msg = "Incorrect Password"
-                    return render(request, "customer_login_sys\changesellerpass.html", {'msg':msg, 'logedin':logedin,})
+                    return render(request, "customer_login_sys/changesellerpass.html", {'msg':msg, 'logedin':logedin,})
 
             else:
                 email = request.session.get('loginseller_email')
                 logedin = Seller.get_sellername_by_email(email)
-                return render(request, "customer_login_sys\changesellerpass.html", {'logedin':logedin,})
+                return render(request, "customer_login_sys/changesellerpass.html", {'logedin':logedin,})
 
         else:
             print("Ends hers")
